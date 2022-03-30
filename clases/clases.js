@@ -57,7 +57,9 @@ class Dog implements Behavior{
     tail;
     snout; // Hocico
 
-    constructor(){}
+    constructor(eyes){
+        this.eyes = eyes;
+    }
 }
 
 // Extends class
