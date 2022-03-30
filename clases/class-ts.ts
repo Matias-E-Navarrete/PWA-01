@@ -1,3 +1,4 @@
+
 // Class
 class Animal {
     name;
@@ -18,7 +19,9 @@ class Animal {
 // Abstract Class
 
 // TODO: Recuerden que en Javascript no podemos utilizar palabras reservadas como
-// abstract. EL detalle de que es abstract lo dejo en el archivo typescript
+// abstract. EL detalle de que es abstract lo que permite decir es que no se puede construir o instanciar un objeto para esa clase
+// esto significa que no puedo hacer const animal = new Animal(20,"male","botas")
+
 abstract class Animal {
     name;
     gender;
@@ -38,14 +41,14 @@ abstract class Animal {
 // Implements interfaces
 /**
  * TODO: Recuerden que las interfaces no se pueden utilizar en javascript mediante la palabra reservada
- * interface debido a que solo se puede hacer con typescript. Para realizarlo en Javascript necesitamos 
- * realizar una serie de pasos complejos. El detalle de lo que es una interface lo dejo en el archivo 
- * typescript
+ * interface debido a que solo se puede hacer con typescript. 
+ * Una interfaz es un contrato que al agregarle a una clase el implements MyInterface obliga a la clase
+ * a cumplir con las firmas (metodos o propiedades declaradas en la interfaz)
  * 
 */
 
 interface Behavior {
-    communicate()
+    communicate() // *firma: es un metodo que la clase Dog va a tener que cumplir o nos lanzará error
     move()
     eat()
 
@@ -57,7 +60,18 @@ class Dog implements Behavior{
     tail;
     snout; // Hocico
 
-    constructor(){}
+
+    communicate(): any {
+        throw new Error("Guau guau."); // esta escribiendo cumpliendo con las firmas de la interfaz Behavior
+    }
+    move(): any {
+        throw new Error("Method not implemented.");
+    }
+
+    eat(): any {
+        throw new Error("Method not implemented.");
+    }
+
 }
 
 // Extends class
@@ -77,4 +91,7 @@ class Cat extends Animal{
         console.log('Miau miauuu');
     }
 }
+
+
+
 
